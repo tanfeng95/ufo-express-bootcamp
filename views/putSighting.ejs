@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>edit sightings</title>
+
+  <head>
+
+  </head>
+
+<body>
+  <div class="container p-2 m-2">
+    <%- include('navBar'); -%>
+      <div>
+        <div class='d-flex justify-content-between m-2 p-2'>
+          <h1>Edit sighting data</h1>
+          <button class="btn btn-primary"><a class="text-white" style="text-decoration:none" href='/'>return to
+              index</a></button>
+        </div>
+      </div>
+      <form action="/sighting/<%= sighting.index %>/edit?_method=PUT" method="POST">
+        <label class="form-label" for="label">sighting text</label><br />
+        <input class="form-control input-large" type="text" id="label" name="text" value="<%= sighting.text %>" /><br />
+        <label class="form-label" for="ingredients">date_time</label><br />
+        <input class="form-control" type="datetime-local" id="ingredients" name="date_time"
+          value="<%= sighting.date_time%>" /><br />
+        <label class="form-label" for="ingredients">city</label><br />
+        <input class="form-control" type="text" id="ingredients" name="city" value="<%= sighting.city%>" /><br />
+        <label class="form-label" for="ingredients">state</label><br />
+        <input class="form-control" type="text" id="ingredients" name="state" value="<%= sighting.state%>" /><br />
+        <label class="form-label" for="ingredients">shape</label><br />
+        <input class="form-control" type="text" id="ingredients" name="shape" value="<%= sighting.shape%>" /><br />
+        <label class="form-label" for="ingredients">duration</label><br />
+        <input class="form-control" type="text" id="ingredients" name="duration"
+          value="<%= sighting.duration%>" /><br />
+        <label class="form-label" for="ingredients">summary</label><br />
+        <input class="form-control" type="text" id="ingredients" name="summary" value="<%= sighting.summary%>" /><br />
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

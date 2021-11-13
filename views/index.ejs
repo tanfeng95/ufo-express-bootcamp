@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>sightings</title>
+</head>
+
+<body>
+  <div class="container">
+    <%- include('navBar'); -%>
+      <div class="row">
+        <div class="col text-center p-2">
+          <h1>Sighting</h1>
+          <button type="button" class="btn btn-primary p-2"><a class='text-white' style="text-decoration:none"
+              href='/sighting'>create new sighting</a></button>
+          <button type="button" class="btn btn-primary p-2"><a class='text-white' style="text-decoration:none"
+              href='/shapes'>List of Shapes</a></button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center bg-secondary p-2 text-white">
+          <h1>sighting listing</h1>
+          <div>
+            <table class='table text-white'>
+              <thread>
+                <tr>
+                  <th scope="col">Index</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Shape</th>
+                  <th scope="col">City</th>
+                  <th scope="col">Sighting</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thread>
+              <tbody>
+                <% for(var i=0; i<sightings.length; i++) {%>
+
+                  <tr>
+                    <th scope="row">
+                      <%= i+1%>
+                    </th>
+                    <td>
+                      <span class='fs-6'>
+                        <%=sightings[i].date_time%>
+                      </span>
+                    </td>
+                    <td> <span class='fs-6'>
+                        <%=sightings[i].shape%>
+                      </span>
+                    </td>
+                    <td> <span class='fs-6'>
+                        <%=sightings[i].city%>
+                      </span>
+                    </td>
+                    <td>
+                      <button class="btn btn-primary">
+                        <a class="text-white" style="text-decoration:none" href='/sighting/<%=i%>'> Sighting <%= i+1%>
+                            <a>
+                      </button>
+                    </td>
+
+                    <td>
+                      <button class="btn btn-warning">
+                        <a class="text-white" style="text-decoration:none" href='sighting/<%=i%>/edit'>Edit sighting</a>
+                      </button>
+                    </td>
+                    <td>
+                      <div>
+                        <form action="/sighting/<%=i%>/delete?_method=DELETE" method="POST">
+                          <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <% } %>
+              </tbody>
+            </table>
+
+            <!-- <% for(var i=0; i<sightings.length; i++) {%>
+                <% if(i===0){ %>
+                  <div class="row text-white" >
+                    <div class="col d-flex justify-content-around p-2" >
+                      <span>index</span>
+                      <span>sighting</span>
+                      <span>shape</span>
+                      <span>edit</span>
+                      <span>delete</span>
+                    </div>
+                  </div>
+                <% } %>
+                <div class="row text-white" >
+                      <div class="col d-flex justify-content-around p-2" >
+                      <span><%= i+1%></span>
+                      <button class="btn btn-primary">
+                        <a class="text-white" style="text-decoration:none" href = '/sighting/<%=i%>'>  sighting <%= i+1%><a> 
+                      </button>
+                      <span class ='fs-6'><%=sightings[i].shape%> </span>
+                      <button class="btn btn-primary"> 
+                         <a class="text-white" style="text-decoration:none" href='sighting/<%=i%>/edit' >edit sighting</a>
+                      </button>
+                      <div>
+                          <form action="/sighting/<%=i%>/delete?_method=DELETE" method="POST">
+                            <button class="btn btn-danger"  type="submit">delete</button>
+                          </form>
+                      </div>
+                  </div>
+
+                </div> 
+              <% } %> -->
+          </div>
+        </div>
+
+      </div>
+
+
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
